@@ -1,17 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\ShortLinkController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,4 +15,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::controller(ShortLinkController::class)->group(function () {
+    Route::get('generate-shorten-link', 'index')->name('generate-shorten-link');
+    Route::post('generate-shorten-link', 'store')->name('generate.link');
+    Route::get('{code}', 'shortenLink')->name('shorten.link');
 });
