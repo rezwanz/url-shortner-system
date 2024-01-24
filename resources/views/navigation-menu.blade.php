@@ -15,6 +15,9 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('generate-shorten-link') }}" :active="request()->routeIs('generate-shorten-link')">
+                        {{ __('URL Shortner') }}
+                    </x-nav-link>
                 </div>
             </div>
 
